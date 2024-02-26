@@ -51,10 +51,14 @@ class TagsApp:
         self.datos1 = ttk.Frame(self.root, width=300, style='barratop.TFrame')
         self.datos1 = ttk.LabelFrame(self.root, text='Datos a inculuir desde Excel', padding=(10,10))
         self.datos1.grid(row=2, column=1, sticky='ew', padx=0, pady=3, columnspan=2)
-        #Frame de datosExtras
-        #self.datos2 = ttk.Frame(self.root, width=300, style='barratop.TFrame')
-        #self.datos2 = ttk.LabelFrame(self.root, text='Primer Dato a incluir de Excel', padding=(10,10))
-        #self.datos2.grid(row=2, column=2, sticky='ew', padx=0, pady=3)
+        #Frame de datosExtras1
+        self.datoEx1 = ttk.Frame(self.root, width=300, style='barratop.TFrame')
+        self.datoEx1 = ttk.LabelFrame(self.root, text='Datos Extras a incluir', padding=(10,10))
+        self.datoEx1.grid(row=3, column=1, sticky='ew', padx=0, pady=3)
+        #Frame de datosExtras2
+        self.datoEx2 = ttk.Frame(self.root, width=300, style='barratop.TFrame')
+        self.datoEx2 = ttk.LabelFrame(self.root, text='Datos Extras a incluir', padding=(10,10))
+        self.datoEx2.grid(row=3, column=2, sticky='ew', padx=0, pady=3)
         
         self.create_widgets()
 
@@ -79,6 +83,16 @@ class TagsApp:
         self.texto3.bind('<KeyRelease>', self.check_entries)
         self.reslt1 = Label(self.datos1, text="No se ha seleccionado ningun archivo aún", background="#414141", foreground="white")
         self.reslt1.grid(row=2, column=0, pady=10, padx=10, columnspan=5)
+        #Label de datos Extras
+        self.lab2 = Label(self.datos1, text="Ingrese el dato a incluir:", background="#414141", foreground="white")
+        self.lab2.grid(row=1, column=0, pady=10, padx=10)
+        self.texto4 = Text(self.datoEx1, height=1, width=10)
+        self.texto4.grid(row=1, column=1, sticky='e', pady=10, padx=10)
+        #Label de datos Extras2
+        self.lab3 = Label(self.datos1, text="Ingrese el dato a incluir:", background="#414141", foreground="white")
+        self.lab3.grid(row=1, column=0, pady=10, padx=10)
+        self.texto5 = Text(self.datoEx1, height=1, width=10)
+        self.texto5.grid(row=1, column=1, sticky='e', pady=10, padx=10)
        
         
 
@@ -93,22 +107,14 @@ class TagsApp:
     
     def check_entries(self, event):
             # Verificar si ambos campos de entrada tienen contenido y habilitar los botones en consecuencia
-            if self.texto1.get("1.0", "end-1c"):
+            if self.texto1.get("1.0", "end-1c") and self.texto2.get("1.0", "end-1c") and self.texto3.get("1.0", "end-1c"):
                 self.btn2['state'] = 'normal'              
                 
                 print("habilitar")
             else:
                 print("deshabilitados")
                 self.btn2['state'] = 'disabled'
-    def check_entries2(self, event):
-            # Verificar si ambos campos de entrada tienen contenido y habilitar los botones en consecuencia
-            if self.texto2.get("1.0", "end-1c"):
-                self.btn3['state'] = 'normal'              
-                
-                print("habilitar")
-            else:
-                print("deshabilitados")
-                self.btn3['state'] = 'disabled'
+    
                 
                 
     
