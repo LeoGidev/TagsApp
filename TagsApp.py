@@ -36,19 +36,25 @@ class TagsApp:
 
         #frame nav        
         self.nav_bar = ttk.Frame(self.root, height=50, style='barratop.TFrame')
-        self.nav_bar.grid(row=0, column=0, sticky='ew', pady=0, padx=0, columnspan=3)
+        self.nav_bar.grid(row=0, column=0, sticky='ew', pady=0, padx=0, columnspan=4)
+        #frame lateral1       
+        self.lat1 = ttk.Frame(self.root, width=50, style='barratop.TFrame')
+        self.lat1.grid(row=0, column=0, sticky='ns', pady=0, padx=0, rowspan=3)
+        #frame lateral2       
+        self.lat2 = ttk.Frame(self.root, width==50, style='barratop.TFrame')
+        self.lat2.grid(row=0, column=0, sticky='ns', pady=0, padx=0, rowspan=3)
         #frame campo de selección de fondo
         self.fondo = ttk.Frame(self.root, width=300, style='barratop.TFrame')
         self.fondo = ttk.LabelFrame(self.root, text='Seleccione la imagene de fondo', padding=(10,10))
-        self.fondo.grid(row=1, column=0, sticky='ew', padx=0, pady=0, columnspan=3)
+        self.fondo.grid(row=1, column=1, sticky='ew', padx=0, pady=0, columnspan=3)
         #Frame de datos1
         self.datos1 = ttk.Frame(self.root, width=300, style='barratop.TFrame')
         self.datos1 = ttk.LabelFrame(self.root, text='Primer Dato a incluir de Excel', padding=(10,10))
-        self.datos1.grid(row=2, column=0, sticky='e', padx=0, pady=0)
+        self.datos1.grid(row=2, column=1, sticky='ew', padx=0, pady=0)
         #Frame de datos2
         self.datos2 = ttk.Frame(self.root, width=300, style='barratop.TFrame')
         self.datos2 = ttk.LabelFrame(self.root, text='Primer Dato a incluir de Excel', padding=(10,10))
-        self.datos2.grid(row=2, column=1, sticky='e', padx=0, pady=0)
+        self.datos2.grid(row=2, column=2, sticky='ew', padx=0, pady=0)
         
         self.create_widgets()
 
