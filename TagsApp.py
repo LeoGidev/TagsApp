@@ -190,13 +190,17 @@ class TagsApp:
             print('error')
 
     def dibujar(self):
-        img = cv2.imread(self.archivo)
+        #img = cv2.imread(self.archivo)
         tamañoLetra = 3
         colorLetra = (255, 255, 255)
         grosorLetra = 3
         i = 0
+        textoExtra1 = self.texto4.get("1.0","end")
+        textoExtra2 = self.texto5.get("1.0", "end")
+        extra = textoExtra1 + " - " + textoExtra2
 
         for a, b, c in zip(list(self.datA), list(self.datB), list(self.datC)):
+            img = cv2.imread(self.archivo)
             texto = self.resultado1 + ": " + str(a)
             ubicacion = (100, 200)
             cv2.putText(img, texto, ubicacion, cv2.FONT_HERSHEY_PLAIN, tamañoLetra, colorLetra, grosorLetra)
@@ -209,10 +213,14 @@ class TagsApp:
             ubicacion3 = (100, 400)
             cv2.putText(img, texto3, ubicacion3, cv2.FONT_HERSHEY_PLAIN, tamañoLetra, colorLetra, grosorLetra)
 
+            ubicacion4 = (100, 600)
+            cv2.putText(img, extra, ubicacion4, cv2.FONT_HERSHEY_PLAIN, tamañoLetra, colorLetra, grosorLetra)
+
             self.rutaresult = 'C:\\Users\\work\\Desktop\\imagenes\\etiqueta' + str(i) + '.jpg'
             cv2.imwrite(self.rutaresult, img)
             i += 1
             print('dibujando', self.rutaresult)
+            
         i = 0
 
     
