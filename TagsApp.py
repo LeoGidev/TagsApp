@@ -196,7 +196,9 @@ class TagsApp:
         grosorLetra = 3
         i = 0
         textoExtra1 = self.texto4.get("1.0","end")
+        textoExtra1 = textoExtra1.strip('\n')
         textoExtra2 = self.texto5.get("1.0", "end")
+        textoExtra2 = textoExtra2.strip('\n')
         extra = textoExtra1 + " - " + textoExtra2
 
         for a, b, c in zip(list(self.datA), list(self.datB), list(self.datC)):
