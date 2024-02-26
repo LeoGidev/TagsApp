@@ -77,8 +77,12 @@ class TagsApp:
         self.btn1 = ttk.Button(self.fondo, text="Abrir", command=self.buscador1)
         self.btn1.grid(row=1, column=1, sticky='w', pady=10, padx=10)
         #boton de dato1
-        self.btn2 = ttk.Button(self.datos1, text="Abrir", command=self.buscador2)
+        self.btn2 = ttk.Button(self.datos1, text="Abrir", command=self.buscador2, state='disabled')
         self.btn2.grid(row=1, column=2, sticky='w', pady=10, padx=10)
+        #button datos2
+        #boton de dato1
+        self.btn3 = ttk.Button(self.datos2, text="Abrir", command=self.buscador3, state='disabled')
+        self.btn3.grid(row=1, column=2, sticky='w', pady=10, padx=10)
     
     def check_entries(self, event):
             # Verificar si ambos campos de entrada tienen contenido y habilitar los botones en consecuencia
@@ -117,7 +121,25 @@ class TagsApp:
                                                              ("all files", "*.*")))
             result2 = self.texto1.get("1.0", "end")
             resultado2 = result2.strip('\n')
-            cuadromensaje = Label(self.lab1, text="dato: " +result2 +'del archivo:' + archivo2, background="#414141", foreground="white")
+            cuadromensaje = Label(self.lab1, text="dato: " +resultado2 +'del archivo:' + archivo2, background="#414141", foreground="white")
+            cuadromensaje.pack()
+            
+            #hoja2 = pd.read_excel(archivo2)
+            #self.dato2 = hoja2[resultado2]
+        except Exception as e:
+            #cuadromensaje = Label(self.ResultadoGeneral, text="Error: " + str(e),background="#414141", foreground="white")
+            #cuadromensaje.pack()
+            print('error')
+    
+    def buscador3(self):
+        try:
+            archivo2 = filedialog.askopenfilename(initialdir="/",
+                                                  title="Elija un archivo",
+                                                  filetypes=(("Hoja de Excel", "*.xls*"),
+                                                             ("all files", "*.*")))
+            result3 = self.texto2.get("1.0", "end")
+            resultado3 = result3.strip('\n')
+            cuadromensaje = Label(self.lab2, text="dato: " +resultado3 +'del archivo:' + archivo2, background="#414141", foreground="white")
             cuadromensaje.pack()
             
             #hoja2 = pd.read_excel(archivo2)
