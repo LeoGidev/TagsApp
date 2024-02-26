@@ -49,12 +49,12 @@ class TagsApp:
         self.fondo.grid(row=1, column=1, sticky='ew', padx=0, pady=3, columnspan=2)
         #Frame de datos1
         self.datos1 = ttk.Frame(self.root, width=300, style='barratop.TFrame')
-        self.datos1 = ttk.LabelFrame(self.root, text='Primer Dato a incluir de Excel', padding=(10,10))
-        self.datos1.grid(row=2, column=1, sticky='ew', padx=0, pady=3)
-        #Frame de datos2
-        self.datos2 = ttk.Frame(self.root, width=300, style='barratop.TFrame')
-        self.datos2 = ttk.LabelFrame(self.root, text='Primer Dato a incluir de Excel', padding=(10,10))
-        self.datos2.grid(row=2, column=2, sticky='ew', padx=0, pady=3)
+        self.datos1 = ttk.LabelFrame(self.root, text='Datos a inculuir desde Excel', padding=(10,10))
+        self.datos1.grid(row=2, column=1, sticky='ew', padx=0, pady=3, columnspan=2)
+        #Frame de datosExtras
+        #self.datos2 = ttk.Frame(self.root, width=300, style='barratop.TFrame')
+        #self.datos2 = ttk.LabelFrame(self.root, text='Primer Dato a incluir de Excel', padding=(10,10))
+        #self.datos2.grid(row=2, column=2, sticky='ew', padx=0, pady=3)
         
         self.create_widgets()
 
@@ -65,34 +65,31 @@ class TagsApp:
     def create_labels_and_entries(self):
         self.arch = Label(self.fondo, text="Imagen no seleccionada:",background="#414141", foreground="white")
         self.arch.grid(row=1,column=0, pady=10)
-        #Label de dato1
-        self.lab1 = Label(self.datos1, text="Ingrese el nombre de dato", background="#414141", foreground="white")
+        #Label de datos excel
+        self.lab1 = Label(self.datos1, text="Ingrese el nombre de cada celda:", background="#414141", foreground="white")
         self.lab1.grid(row=1, column=0, pady=10, padx=10)
         self.texto1 = Text(self.datos1, height=1, width=10)
         self.texto1.grid(row=1, column=1, sticky='e', pady=10, padx=10)
+        self.texto2 = Text(self.datos1, height=1, width=10)
+        self.texto2.grid(row=1, column=2, sticky='e', pady=10, padx=10)
+        self.texto3 = Text(self.datos1, height=1, width=10)
+        self.texto3.grid(row=1, column=3, sticky='e', pady=10, padx=10)
         self.texto1.bind('<KeyRelease>', self.check_entries)
+        self.texto2.bind('<KeyRelease>', self.check_entries)
+        self.texto3.bind('<KeyRelease>', self.check_entries)
         self.reslt1 = Label(self.datos1, text="No se ha seleccionado ningun archivo aún", background="#414141", foreground="white")
-        self.reslt1.grid(row=2, column=0, pady=10, padx=10, columnspan=3)
-        ##Label de dato2
-        self.lab2 = Label(self.datos2, text="Ingrese el nombre de dato", background="#414141", foreground="white")
-        self.lab2.grid(row=1, column=0, pady=10, padx=10)
-        self.texto2 = Text(self.datos2, height=1, width=10)
-        self.texto2.grid(row=1, column=1, sticky='e', pady=10, padx=10)
-        self.texto2.bind('<KeyRelease>', self.check_entries2)
-        self.reslt2 = Label(self.datos2, text="No se ha seleccionado ningun archivo aún", background="#414141", foreground="white")
-        self.reslt2.grid(row=2, column=0, pady=10, padx=10, columnspan=3)
+        self.reslt1.grid(row=2, column=0, pady=10, padx=10, columnspan=5)
+       
         
 
     def create_buttons(self):
         self.btn1 = ttk.Button(self.fondo, text="Abrir", command=self.buscador1)
         self.btn1.grid(row=1, column=1, sticky='w', pady=10, padx=10)
-        #boton de dato1
+        #boton de datoexcel
         self.btn2 = ttk.Button(self.datos1, text="Abrir", command=self.buscador2, state='disabled')
-        self.btn2.grid(row=1, column=2, sticky='w', pady=10, padx=10)
-        #button datos2
-        #boton de dato1
-        self.btn3 = ttk.Button(self.datos2, text="Abrir", command=self.buscador3, state='disabled')
-        self.btn3.grid(row=1, column=2, sticky='w', pady=10, padx=10)
+        self.btn2.grid(row=1, column=4, sticky='w', pady=10, padx=10)
+        
+        
     
     def check_entries(self, event):
             # Verificar si ambos campos de entrada tienen contenido y habilitar los botones en consecuencia
@@ -137,9 +134,16 @@ class TagsApp:
                                                   title="Elija un archivo",
                                                   filetypes=(("Hoja de Excel", "*.xls*"),
                                                              ("all files", "*.*")))
-            result2 = self.texto1.get("1.0", "end")
+            result1 = self.texto1.get("1.0", "end")
+            resultado1 = result1.strip('\n')
+
+            result2 = self.texto2.get("1.0", "end")
             resultado2 = result2.strip('\n')
-            cuadromensaje = Label(self.reslt1, text="dato: " +resultado2 +'del archivo:' + archivo2, background="#414141", foreground="white")
+
+            result3 = self.texto3.get("1.0", "end")
+            resultado3 = result3.strip('\n')
+
+            cuadromensaje = Label(self.reslt1, text="Columnas a buscar: "+ resultado1 + "-" + resultado2 + '-' + resultado3, background="#414141", foreground="white")
             cuadromensaje.pack()
             
             #hoja2 = pd.read_excel(archivo2)
@@ -149,23 +153,7 @@ class TagsApp:
             #cuadromensaje.pack()
             print('error')
     
-    def buscador3(self):
-        try:
-            archivo3 = filedialog.askopenfilename(initialdir="/",
-                                                  title="Elija un archivo",
-                                                  filetypes=(("Hoja de Excel", "*.xls*"),
-                                                             ("all files", "*.*")))
-            result3 = self.texto2.get("1.0", "end")
-            resultado3 = result3.strip('\n')
-            cuadromensaje = Label(self.reslt2, text="dato: " +resultado3 +'del archivo:' + archivo3, background="#414141", foreground="white")
-            cuadromensaje.pack()
-            
-            #hoja2 = pd.read_excel(archivo2)
-            #self.dato2 = hoja2[resultado2]
-        except Exception as e:
-            #cuadromensaje = Label(self.ResultadoGeneral, text="Error: " + str(e),background="#414141", foreground="white")
-            #cuadromensaje.pack()
-            print('error')
+    
 
 
 if __name__ == "__main__":
