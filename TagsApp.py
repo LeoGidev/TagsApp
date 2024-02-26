@@ -230,6 +230,7 @@ class TagsApp:
 
             # Actualizar el valor de la barra de progreso
             self.barra_progreso.step(1)
+            self.barra_progreso.update_idletasks()  # Actualizar la interfaz gráfica
 
         # Volver a configurar la barra de progreso en modo indeterminado
         self.barra_progreso.config(mode='indeterminate')
