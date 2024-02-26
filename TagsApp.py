@@ -39,10 +39,10 @@ class TagsApp:
         self.nav_bar.grid(row=0, column=0, sticky='ew', pady=0, padx=0, columnspan=4)
         #frame lateral1       
         self.lat1 = ttk.Frame(self.root, width=50, style='barratop.TFrame')
-        self.lat1.grid(row=0, column=0, sticky='ns', pady=0, padx=0, rowspan=3)
+        self.lat1.grid(row=0, column=0, sticky='ns', pady=0, padx=0, rowspan=4)
         #frame lateral2       
         self.lat2 = ttk.Frame(self.root, width=50, style='barratop.TFrame')
-        self.lat2.grid(row=0, column=3, sticky='ns', pady=0, padx=0, rowspan=3)
+        self.lat2.grid(row=0, column=3, sticky='ns', pady=0, padx=0, rowspan=4)
         #frame campo de selección de fondo
         self.fondo = ttk.Frame(self.root, width=300, style='barratop.TFrame')
         self.fondo = ttk.LabelFrame(self.root, text='Seleccione la imagene de fondo', padding=(10,10))
@@ -86,13 +86,13 @@ class TagsApp:
         #Label de datos Extras
         self.lab2 = Label(self.datos1, text="Ingrese el dato a incluir:", background="#414141", foreground="white")
         self.lab2.grid(row=1, column=0, pady=10, padx=10)
-        self.texto4 = Text(self.datoEx1, height=1, width=10)
-        self.texto4.grid(row=1, column=1, sticky='e', pady=10, padx=10)
+        self.texto4 = Text(self.datoEx1, height=1, width=40)
+        self.texto4.grid(row=1, column=1, sticky='we', pady=10, padx=10)
         #Label de datos Extras2
         self.lab3 = Label(self.datos1, text="Ingrese el dato a incluir:", background="#414141", foreground="white")
         self.lab3.grid(row=1, column=0, pady=10, padx=10)
-        self.texto5 = Text(self.datoEx1, height=1, width=10)
-        self.texto5.grid(row=1, column=1, sticky='e', pady=10, padx=10)
+        self.texto5 = Text(self.datoEx2, height=1, width=40)
+        self.texto5.grid(row=1, column=1, sticky='we', pady=10, padx=10)
        
         
 
