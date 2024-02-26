@@ -195,7 +195,7 @@ class TagsApp:
             #Leer imagen
             img = cv2.imread(self.archivo)
             #Características del texto
-            texto = self.resultado1 +  str(a)
+            texto = self.resultado1 + ": " + str(a)
             ubicacion = (100,200)
             font = cv2.FONT_HERSHEY_PLAIN
             tamañoLetra = 3
@@ -204,7 +204,7 @@ class TagsApp:
             #Escribir texto
             cv2.putText(img, texto, ubicacion, font, tamañoLetra, colorLetra, grosorLetra)
             #Guardar imagen
-            self.rutaresult = 'C:\\Users\\work\\Desktop\\python\\imagenes\\etiqueta'+ str(i) +'.jpg'
+            self.rutaresult = 'C:\\Users\\work\\Desktop\\imagenes\\etiqueta'+ str(i) +'.jpg'
             cv2.imwrite(self.rutaresult, img)
             i=i+1
             print('dibujando',self.rutaresult)
