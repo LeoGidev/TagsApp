@@ -75,7 +75,7 @@ class TagsApp:
         style = ttk.Style()        
         style.configure("Dark.TFrame", foreground="white", background="#414141", borderwidth=0) 
         #primer campo
-        self.fonint1 = ttk.Frame(self.fondo, width=100, style='Dark.TFrame')
+        self.fonint1 = ttk.Frame(self.fondo, width=10, style='Dark.TFrame')
         self.fonint1.grid(row=0, column=0, sticky='ns', padx=0, pady=3, rowspan=2)
         self.arch = Label(self.fondo, text="Imagen no seleccionada:",background="#414141", foreground="white")
         self.arch.grid(row=1,column=1, sticky="ew", pady=10)
@@ -97,12 +97,12 @@ class TagsApp:
         self.lab2 = Label(self.datoEx1, text="Ingrese el dato a incluir:", background="#414141", foreground="white")
         self.lab2.grid(row=1, column=0, pady=10, padx=10)
         self.texto4 = Text(self.datoEx1, height=1, width=40)
-        self.texto4.grid(row=1, column=1, sticky='we', pady=10, padx=10)
+        self.texto4.grid(row=2, column=0, sticky='we', pady=10, padx=10)
         #Label de datos Extras2
         self.lab3 = Label(self.datoEx2, text="Ingrese el dato a incluir:", background="#414141", foreground="white")
         self.lab3.grid(row=1, column=0, pady=10, padx=10)
         self.texto5 = Text(self.datoEx2, height=1, width=40)
-        self.texto5.grid(row=1, column=1, sticky='we', pady=10, padx=10)
+        self.texto5.grid(row=2, column=0, sticky='we', pady=10, padx=10)
        
         
 
@@ -111,7 +111,7 @@ class TagsApp:
         style.configure("Fancy.TButton", foreground="white", background="#0099ff", borderwidth=0) 
         #boton de imagenes
         self.btn1 = ttk.Button(self.fondo, text="Abrir", command=self.buscador1, style='Fancy.TButton')
-        self.btn1.grid(row=1, column=4, sticky='we', pady=10, padx=10)
+        self.btn1.grid(row=1, column=2, sticky='we', pady=10, padx=10)
         #boton de datoexcel
         self.btn2 = ttk.Button(self.datos1, text="Abrir", command=self.buscador2, state='disabled', style='Fancy.TButton')
         self.btn2.grid(row=1, column=4, sticky='w', pady=10, padx=10)
