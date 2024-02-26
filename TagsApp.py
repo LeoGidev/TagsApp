@@ -125,7 +125,7 @@ class TagsApp:
         self.fonint2.grid(row=0, column=0, sticky='ew', padx=0, pady=3, rowspan=2)
         #boton de crear
         
-        self.dale = ttk.Button(self.listo, text="Crear etiquetas", command=self.buscador2, width=30, style='Fancy.TButton')
+        self.dale = ttk.Button(self.listo, text="Crear etiquetas", command=self.dibujar, width=30, style='Fancy.TButton')
         self.dale.grid(row=1, column=1, sticky='ew', pady=10, padx=10)
         
         self.fonint3 = ttk.Frame(self.listo, width=300)
@@ -204,7 +204,7 @@ class TagsApp:
             #Escribir texto
             cv2.putText(img, texto, ubicacion, font, tamañoLetra, colorLetra, grosorLetra)
             #Guardar imagen
-            self.rutaresult = self.archivo + 'etiqueta ' + str(i) + '.jpg'
+            self.rutaresult = self.archivo + '\\etiqueta ' + str(i) + '.jpg'
             cv2.imwrite(self.rutaresult, img)
             i=i+1
     
