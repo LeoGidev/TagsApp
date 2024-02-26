@@ -31,7 +31,7 @@ class TagsApp:
         #frame campo de selección de fondo
         self.fondo = ttk.Frame(self.root, width=300, style='barratop.TFrame')
         self.fondo = ttk.LabelFrame(self.root, text='Seleccione la imagene de fondo', padding=(10,10))
-        self.fondo.grid(row=1, column=0, sticky='we', padx=0, pady=0, columnspan=3)
+        self.fondo.grid(row=1, column=0, sticky='ew', padx=0, pady=0, columnspan=3)
         
         #configuración de la prioridad para achicar columnas o rows en el resize de la ventana
         self.root.columnconfigure(0, weight=0)
@@ -47,12 +47,12 @@ class TagsApp:
         self.create_buttons()
     
     def create_labels_and_entries(self):
-        arch = Label(self.fondo, text="Imagen no seleccionada:",background="#414141", foreground="white")
-        arch.grid(row=1,column=2, pady=10)
+        self.arch = Label(self.fondo, text="Imagen no seleccionada:",background="#414141", foreground="white")
+        self.arch.grid(row=1,column=2, pady=10)
         
 
     def create_buttons(self):
-        self.btn1 = ttk.Button(self.fondo, text="Abrir", command=self.buscador1, state='disabled')
+        self.btn1 = ttk.Button(self.fondo, text="Abrir", command=self.buscador1)
         self.btn1.grid(row=0, column=2, sticky='w', pady=10, padx=10)
     
     def buscador1(self):
@@ -64,8 +64,8 @@ class TagsApp:
 
             #result = self.texto.get("1.0", "end")
             #resultado = result.strip("\n")
-            #cuadromensaje = Label(self.ResultadoGeneral, text="Archivo abierto: " + archivo, background="#414141", foreground="white")
-            #cuadromensaje.pack()
+            cuadromensaje = Label(self.arch, text="Archivo abierto: " + archivo, background="#414141", foreground="white")
+            cuadromensaje.pack()
             
             #hoja1 = pd.read_excel(archivo)
             #self.dato1 = hoja1[resultado]
