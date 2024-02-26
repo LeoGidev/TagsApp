@@ -203,10 +203,11 @@ class TagsApp:
         textoExtra2 = self.texto5.get("1.0", "end")
         textoExtra2 = textoExtra2.strip('\n')
         extra = textoExtra1 + " - " + textoExtra2
-        # Configurar la barra de progreso
-        self.barra_progreso.start(10)
+        
 
         for a, b, c in zip(list(self.datA), list(self.datB), list(self.datC)):
+            # Configurar la barra de progreso
+            self.barra_progreso.start(i)
             img = cv2.imread(self.archivo)
             texto = self.resultado1 + ": " + str(a)
             ubicacion = (100, 200)
