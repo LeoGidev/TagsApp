@@ -107,8 +107,12 @@ class TagsApp:
         
 
     def create_buttons(self):
+
         style = ttk.Style()        
         style.configure("Fancy.TButton", foreground="white", background="#0099ff", borderwidth=0) 
+               
+        style.configure("Dark.TFrame", foreground="white", background="#414141", borderwidth=0) 
+        
         #boton de imagenes
         self.btn1 = ttk.Button(self.fondo, text="Abrir", command=self.buscador1, style='Fancy.TButton')
         self.btn1.grid(row=1, column=2, sticky='we', pady=10, padx=10)
@@ -119,6 +123,9 @@ class TagsApp:
         #boton de datoexcel
         self.dale = ttk.Button(self.listo, text="Crear etiquetas", command=self.buscador2, style='Fancy.TButton')
         self.dale.grid(row=1, column=2, sticky='ns', pady=10, padx=10)
+        #frame para el boton final
+        self.fonint1 = ttk.Frame(self.fondo, width=10, style='Dark.TFrame')
+        self.fonint1.grid(row=0, column=0, sticky='ns', padx=0, pady=3, rowspan=2)
         
         
     
