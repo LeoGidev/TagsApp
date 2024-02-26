@@ -17,7 +17,7 @@ class TagsApp:
         #configuración de ventana
         self.root = root
         self.root.title('Tags App')
-        self.root.geometry("860x600")
+        self.root.geometry("1000x600")
         self.root.configure(bg='#414141')
         
         #estilos de los frames
@@ -65,12 +65,16 @@ class TagsApp:
         self.texto1 = Text(self.datos1, height=1, width=10)
         self.texto1.grid(row=1, column=1, sticky='e', pady=10, padx=10)
         self.texto1.bind('<KeyRelease>', self.check_entries)
+        self.reslt1 = Label(self.datos1, text="No se ha seleccionado ningun archivo aún", background="#414141", foreground="white")
+        self.reslt1.grid(row=2, column=0, pady=10, padx=10, columnspan=3)
         ##Label de dato2
         self.lab2 = Label(self.datos2, text="Ingrese el nombre de dato", background="#414141", foreground="white")
         self.lab2.grid(row=1, column=0, pady=10, padx=10)
         self.texto2 = Text(self.datos2, height=1, width=10)
         self.texto2.grid(row=1, column=1, sticky='e', pady=10, padx=10)
-        self.texto2.bind('<KeyRelease>', self.check_entries)
+        self.texto2.bind('<KeyRelease>', self.check_entries2)
+        self.reslt2 = Label(self.datos2, text="No se ha seleccionado ningun archivo aún", background="#414141", foreground="white")
+        self.reslt2.grid(row=2, column=0, pady=10, padx=10, columnspan=3)
         
 
     def create_buttons(self):
@@ -86,16 +90,24 @@ class TagsApp:
     
     def check_entries(self, event):
             # Verificar si ambos campos de entrada tienen contenido y habilitar los botones en consecuencia
-            if self.texto1.get("1.0", "end-1c") and self.texto2.get("1.0", "end-1c"):
-                self.btn1['state'] = 'normal'
-                self.btn2['state'] = 'normal'
-                self.root.nametowidget(self.root.grid_slaves(row=2, column=0)[0]).config(state='normal')
+            if self.texto1.get("1.0", "end-1c"):
+                self.btn2['state'] = 'normal'              
+                
                 print("habilitar")
             else:
-                print("desahbilitados")
-                self.btn1['state'] = 'disabled'
+                print("deshabilitados")
                 self.btn2['state'] = 'disabled'
-                self.root.nametowidget(self.root.grid_slaves(row=2, column=0)[0]).config(state='disabled')
+    def check_entries2(self, event):
+            # Verificar si ambos campos de entrada tienen contenido y habilitar los botones en consecuencia
+            if self.texto2.get("1.0", "end-1c"):
+                self.btn3['state'] = 'normal'              
+                
+                print("habilitar")
+            else:
+                print("deshabilitados")
+                self.btn3['state'] = 'disabled'
+                
+                
     
     def buscador1(self):
         try:
@@ -121,7 +133,7 @@ class TagsApp:
                                                              ("all files", "*.*")))
             result2 = self.texto1.get("1.0", "end")
             resultado2 = result2.strip('\n')
-            cuadromensaje = Label(self.lab1, text="dato: " +resultado2 +'del archivo:' + archivo2, background="#414141", foreground="white")
+            cuadromensaje = Label(self.reslt1, text="dato: " +resultado2 +'del archivo:' + archivo2, background="#414141", foreground="white")
             cuadromensaje.pack()
             
             #hoja2 = pd.read_excel(archivo2)
@@ -133,13 +145,13 @@ class TagsApp:
     
     def buscador3(self):
         try:
-            archivo2 = filedialog.askopenfilename(initialdir="/",
+            archivo3 = filedialog.askopenfilename(initialdir="/",
                                                   title="Elija un archivo",
                                                   filetypes=(("Hoja de Excel", "*.xls*"),
                                                              ("all files", "*.*")))
             result3 = self.texto2.get("1.0", "end")
             resultado3 = result3.strip('\n')
-            cuadromensaje = Label(self.lab2, text="dato: " +resultado3 +'del archivo:' + archivo2, background="#414141", foreground="white")
+            cuadromensaje = Label(self.reslt2, text="dato: " +resultado3 +'del archivo:' + archivo3, background="#414141", foreground="white")
             cuadromensaje.pack()
             
             #hoja2 = pd.read_excel(archivo2)
