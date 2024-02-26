@@ -42,10 +42,13 @@ class TagsApp:
         self.fondo = ttk.LabelFrame(self.root, text='Seleccione la imagene de fondo', padding=(10,10))
         self.fondo.grid(row=1, column=0, sticky='ew', padx=0, pady=0, columnspan=3)
         #Frame de datos1
-        #frame campo de selección de fondo
         self.datos1 = ttk.Frame(self.root, width=300, style='barratop.TFrame')
         self.datos1 = ttk.LabelFrame(self.root, text='Primer Dato a incluir de Excel', padding=(10,10))
         self.datos1.grid(row=2, column=0, sticky='e', padx=0, pady=0)
+        #Frame de datos2
+        self.datos2 = ttk.Frame(self.root, width=300, style='barratop.TFrame')
+        self.datos2 = ttk.LabelFrame(self.root, text='Primer Dato a incluir de Excel', padding=(10,10))
+        self.datos2.grid(row=2, column=1, sticky='e', padx=0, pady=0)
         
         self.create_widgets()
 
@@ -57,11 +60,17 @@ class TagsApp:
         self.arch = Label(self.fondo, text="Imagen no seleccionada:",background="#414141", foreground="white")
         self.arch.grid(row=1,column=0, pady=10)
         #Label de dato1
-        self.lab1 = Label(self.datos1, text="Ingrese el nombre de dato")
+        self.lab1 = Label(self.datos1, text="Ingrese el nombre de dato", background="#414141", foreground="white")
         self.lab1.grid(row=1, column=0, pady=10, padx=10)
         self.texto1 = Text(self.datos1, height=1, width=10)
         self.texto1.grid(row=1, column=1, sticky='e', pady=10, padx=10)
-        #self.texto1.bind('<KeyRelease>', self.check_entries)
+        self.texto1.bind('<KeyRelease>', self.check_entries)
+        ##Label de dato2
+        self.lab2 = Label(self.datos2, text="Ingrese el nombre de dato", background="#414141", foreground="white")
+        self.lab2.grid(row=1, column=0, pady=10, padx=10)
+        self.texto2 = Text(self.datos2, height=1, width=10)
+        self.texto2.grid(row=1, column=1, sticky='e', pady=10, padx=10)
+        self.texto2.bind('<KeyRelease>', self.check_entries)
         
 
     def create_buttons(self):
@@ -70,6 +79,19 @@ class TagsApp:
         #boton de dato1
         self.btn2 = ttk.Button(self.datos1, text="Abrir", command=self.buscador2)
         self.btn2.grid(row=1, column=2, sticky='w', pady=10, padx=10)
+    
+    def check_entries(self, event):
+            # Verificar si ambos campos de entrada tienen contenido y habilitar los botones en consecuencia
+            if self.texto1.get("1.0", "end-1c") and self.texto2.get("1.0", "end-1c"):
+                self.btn1['state'] = 'normal'
+                self.btn2['state'] = 'normal'
+                self.root.nametowidget(self.root.grid_slaves(row=2, column=0)[0]).config(state='normal')
+                print("habilitar")
+            else:
+                print("desahbilitados")
+                self.btn1['state'] = 'disabled'
+                self.btn2['state'] = 'disabled'
+                self.root.nametowidget(self.root.grid_slaves(row=2, column=0)[0]).config(state='disabled')
     
     def buscador1(self):
         try:
