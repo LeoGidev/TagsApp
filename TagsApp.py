@@ -70,6 +70,9 @@ class TagsApp:
     def create_widgets(self):
         self.create_labels_and_entries()
         self.create_buttons()
+        # Barra de progreso
+        self.barra_progreso = ttk.Progressbar(self.root, length=300, mode='indeterminate')
+        self.barra_progreso.grid(row=5, column=1, columnspan=2, pady=10)
     
     def create_labels_and_entries(self):
         style = ttk.Style()        
@@ -200,6 +203,8 @@ class TagsApp:
         textoExtra2 = self.texto5.get("1.0", "end")
         textoExtra2 = textoExtra2.strip('\n')
         extra = textoExtra1 + " - " + textoExtra2
+        # Configurar la barra de progreso
+        self.barra_progreso.start(10)
 
         for a, b, c in zip(list(self.datA), list(self.datB), list(self.datC)):
             img = cv2.imread(self.archivo)
@@ -224,6 +229,8 @@ class TagsApp:
             print('dibujando', self.rutaresult)
             
         i = 0
+        # Detener la barra de progreso al completar la tarea
+        self.barra_progreso.stop()
 
     
     
