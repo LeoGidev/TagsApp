@@ -38,3 +38,13 @@ class TagsApp:
     def create_widgets(self):
         self.create_labels_and_entries()
         self.create_buttons()
+    
+    def create_labels_and_entries(self):
+
+    def create_buttons(self):
+
+
+if __name__ == "__main__":
+    root = ThemedTk(theme="equilux")
+    app = TagsApp(root)
+    root.mainloop()
