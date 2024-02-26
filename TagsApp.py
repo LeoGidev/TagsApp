@@ -188,6 +188,8 @@ class TagsApp:
             cuadromensaje = Label(self.reslt1, text="Error: " + str(e),background="#414141", foreground="white")
             cuadromensaje.pack()
             print('error')
+
+    
     
     
 
