@@ -190,24 +190,31 @@ class TagsApp:
             print('error')
 
     def dibujar(self):
-        i=0
-        for a in list(self.datA):
-            #Leer imagen
-            img = cv2.imread(self.archivo)
-            #Características del texto
+        img = cv2.imread(self.archivo)
+        tamañoLetra = 3
+        colorLetra = (255, 255, 255)
+        grosorLetra = 3
+        i = 0
+
+        for a, b, c in zip(list(self.datA), list(self.datB), list(self.datC)):
             texto = self.resultado1 + ": " + str(a)
-            ubicacion = (100,200)
-            font = cv2.FONT_HERSHEY_PLAIN
-            tamañoLetra = 3
-            colorLetra = (255,255,255)
-            grosorLetra = 3
-            #Escribir texto
-            cv2.putText(img, texto, ubicacion, font, tamañoLetra, colorLetra, grosorLetra)
-            #Guardar imagen
-            self.rutaresult = 'C:\\Users\\work\\Desktop\\imagenes\\etiqueta'+ str(i) +'.jpg'
+            ubicacion = (100, 200)
+            cv2.putText(img, texto, ubicacion, cv2.FONT_HERSHEY_PLAIN, tamañoLetra, colorLetra, grosorLetra)
+
+            texto2 = self.resultado2 + ": " + str(b)
+            ubicacion2 = (100, 300)
+            cv2.putText(img, texto2, ubicacion2, cv2.FONT_HERSHEY_PLAIN, tamañoLetra, colorLetra, grosorLetra)
+
+            texto3 = self.resultado3 + ": " + str(c)
+            ubicacion3 = (100, 400)
+            cv2.putText(img, texto3, ubicacion3, cv2.FONT_HERSHEY_PLAIN, tamañoLetra, colorLetra, grosorLetra)
+
+            self.rutaresult = 'C:\\Users\\work\\Desktop\\imagenes\\etiqueta' + str(i) + '.jpg'
             cv2.imwrite(self.rutaresult, img)
-            i=i+1
-            print('dibujando',self.rutaresult)
+            i += 1
+            print('dibujando', self.rutaresult)
+        i = 0
+
     
     
 
