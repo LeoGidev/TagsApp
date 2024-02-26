@@ -59,6 +59,10 @@ class TagsApp:
         self.datoEx2 = ttk.Frame(self.root, width=300, style='barratop.TFrame')
         self.datoEx2 = ttk.LabelFrame(self.root, text='Datos Extras a incluir', padding=(10,10))
         self.datoEx2.grid(row=3, column=2, sticky='ew', padx=0, pady=3)
+        #Frame de boton
+        self.listo = ttk.Frame(self.root, width=300, style='barratop.TFrame')
+        self.listo = ttk.LabelFrame(self.root, text='Crear Etiquetas', padding=(10,10))
+        self.listo.grid(row=4, column=1, sticky='ew', padx=0, pady=3, columnspan=2)
         
         self.create_widgets()
 
@@ -68,7 +72,7 @@ class TagsApp:
     
     def create_labels_and_entries(self):
         self.arch = Label(self.fondo, text="Imagen no seleccionada:",background="#414141", foreground="white")
-        self.arch.grid(row=1,column=0, pady=10)
+        self.arch.grid(row=1,column=0, sticky="ew", pady=10)
         #Label de datos excel
         self.lab1 = Label(self.datos1, text="Ingrese el nombre de cada celda:", background="#414141", foreground="white")
         self.lab1.grid(row=1, column=0, pady=10, padx=10)
@@ -97,11 +101,18 @@ class TagsApp:
         
 
     def create_buttons(self):
-        self.btn1 = ttk.Button(self.fondo, text="Abrir", command=self.buscador1)
-        self.btn1.grid(row=1, column=1, sticky='w', pady=10, padx=10)
+        style = ttk.Style()        
+        style.configure("Fancy.TButton", foreground="white", background="#0099ff", borderwidth=0) 
+        #boton de imagenes
+        self.btn1 = ttk.Button(self.fondo, text="Abrir", command=self.buscador1, style='Fancy.TButton')
+        self.btn1.grid(row=1, column=4, sticky='we', pady=10, padx=10)
         #boton de datoexcel
-        self.btn2 = ttk.Button(self.datos1, text="Abrir", command=self.buscador2, state='disabled')
+        self.btn2 = ttk.Button(self.datos1, text="Abrir", command=self.buscador2, state='disabled', style='Fancy.TButton')
         self.btn2.grid(row=1, column=4, sticky='w', pady=10, padx=10)
+        #boton de crear
+        #boton de datoexcel
+        self.dale = ttk.Button(self.listo, text="Crear etiquetas", command=self.buscador2, style='Fancy.TButton')
+        self.dale.grid(row=1, column=2, sticky='ns', pady=10, padx=10)
         
         
     
