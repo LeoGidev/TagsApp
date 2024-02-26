@@ -148,13 +148,13 @@ class TagsApp:
     
     def buscador1(self):
         try:
-            archivo = filedialog.askopenfilename(initialdir="/",
+            self.archivo = filedialog.askopenfilename(initialdir="/",
                                                  title="Elija un archivo",
                                                  filetypes=(("imagen", "*.jpg*"),
                                                             ("all files", "*.*")))
 
            
-            cuadromensaje = Label(self.arch, text="Archivo abierto: " + archivo, background="#414141", foreground="white")
+            cuadromensaje = Label(self.arch, text="Archivo abierto: " + self.archivo, background="#414141", foreground="white")
             cuadromensaje.pack()
             
             
@@ -189,7 +189,24 @@ class TagsApp:
             cuadromensaje.pack()
             print('error')
 
-    
+    def dibujar(self):
+        i=0
+        for a in list(self.datA):
+            #Leer imagen
+            img = cv2.imread(self.archivo)
+            #Características del texto
+            texto = self.resultado1 +  str(a)
+            ubicacion = (100,200)
+            font = cv2.FONT_HERSHEY_PLAIN
+            tamañoLetra = 3
+            colorLetra = (255,255,255)
+            grosorLetra = 3
+            #Escribir texto
+            cv2.putText(img, texto, ubicacion, font, tamañoLetra, colorLetra, grosorLetra)
+            #Guardar imagen
+            self.rutaresult = self.archivo + 'etiqueta ' + str(i) + '.jpg'
+            cv2.imwrite(self.rutaresult, img)
+            i=i+1
     
     
 
