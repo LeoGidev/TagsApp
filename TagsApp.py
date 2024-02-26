@@ -17,7 +17,7 @@ class TagsApp:
         #configuración de ventana
         self.root = root
         self.root.title('Tags App')
-        self.root.geometry("900x600")
+        self.root.geometry("940x640")
         self.root.configure(bg='#414141')
         
         #estilos de los frames
