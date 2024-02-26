@@ -169,22 +169,24 @@ class TagsApp:
                                                   filetypes=(("Hoja de Excel", "*.xls*"),
                                                              ("all files", "*.*")))
             result1 = self.texto1.get("1.0", "end")
-            resultado1 = result1.strip('\n')
+            self.resultado1 = result1.strip('\n')
 
             result2 = self.texto2.get("1.0", "end")
-            resultado2 = result2.strip('\n')
+            self.resultado2 = result2.strip('\n')
 
             result3 = self.texto3.get("1.0", "end")
-            resultado3 = result3.strip('\n')
+            self.resultado3 = result3.strip('\n')
 
-            cuadromensaje = Label(self.reslt1, text="Columnas a buscar: "+ resultado1 + "-" + resultado2 + '-' + resultado3, background="#414141", foreground="white")
+            cuadromensaje = Label(self.reslt1, text="Columnas a buscar: "+ self.resultado1 + "-" + self.resultado2 + '-' + self.resultado3, background="#414141", foreground="white")
             cuadromensaje.pack()
             
-            #hoja2 = pd.read_excel(archivo2)
-            #self.dato2 = hoja2[resultado2]
+            hoja = pd.read_excel(archivo2)
+            self.datA = hoja[self.resultado1]
+            self.datB = hoja[self.resultado2]
+            self.datC = hoja[self.resultado3]
         except Exception as e:
-            #cuadromensaje = Label(self.ResultadoGeneral, text="Error: " + str(e),background="#414141", foreground="white")
-            #cuadromensaje.pack()
+            cuadromensaje = Label(self.reslt1, text="Error: " + str(e),background="#414141", foreground="white")
+            cuadromensaje.pack()
             print('error')
     
     
