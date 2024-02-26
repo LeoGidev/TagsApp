@@ -204,9 +204,10 @@ class TagsApp:
             #Escribir texto
             cv2.putText(img, texto, ubicacion, font, tamañoLetra, colorLetra, grosorLetra)
             #Guardar imagen
-            self.rutaresult = self.archivo + '\\etiqueta ' + str(i) + '.jpg'
+            self.rutaresult = 'C:\\Users\\work\\Desktop\\python\\imagenes\\etiqueta'+ str(i) +'.jpg'
             cv2.imwrite(self.rutaresult, img)
             i=i+1
+            print('dibujando',self.rutaresult)
     
     
 
