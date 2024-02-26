@@ -24,7 +24,7 @@ class TagsApp:
         style = ttk.Style()        
         self.root.set_theme('equilux')  
         style.configure('barratop.TFrame', background='#414141')
-        style.configure('modulo.TFrame', background='#414141')
+        style.configure('modulo.TFrame', background='white')
         
         
         #configuración de la prioridad para achicar columnas o rows en el resize de la ventana
@@ -47,6 +47,7 @@ class TagsApp:
         self.fondo = ttk.Frame(self.root, width=300, style='barratop.TFrame')
         self.fondo = ttk.LabelFrame(self.root, text='Seleccione la imagene de fondo', padding=(10,10))
         self.fondo.grid(row=1, column=1, sticky='ew', padx=0, pady=3, columnspan=2)
+        
         #Frame de datos1
         self.datos1 = ttk.Frame(self.root, width=300, style='barratop.TFrame')
         self.datos1 = ttk.LabelFrame(self.root, text='Datos a inculuir desde Excel', padding=(10,10))
@@ -71,8 +72,13 @@ class TagsApp:
         self.create_buttons()
     
     def create_labels_and_entries(self):
+        style = ttk.Style()        
+        style.configure("Dark.TFrame", foreground="white", background="#414141", borderwidth=0) 
+        #primer campo
+        self.fonint1 = ttk.Frame(self.fondo, width=100, style='Dark.TFrame')
+        self.fonint1.grid(row=0, column=0, sticky='ns', padx=0, pady=3, rowspan=2)
         self.arch = Label(self.fondo, text="Imagen no seleccionada:",background="#414141", foreground="white")
-        self.arch.grid(row=1,column=0, sticky="ew", pady=10)
+        self.arch.grid(row=1,column=1, sticky="ew", pady=10)
         #Label de datos excel
         self.lab1 = Label(self.datos1, text="Ingrese el nombre de cada celda:", background="#414141", foreground="white")
         self.lab1.grid(row=1, column=0, pady=10, padx=10)
@@ -88,12 +94,12 @@ class TagsApp:
         self.reslt1 = Label(self.datos1, text="No se ha seleccionado ningun archivo aún", background="#414141", foreground="white")
         self.reslt1.grid(row=2, column=0, pady=10, padx=10, columnspan=5)
         #Label de datos Extras
-        self.lab2 = Label(self.datos1, text="Ingrese el dato a incluir:", background="#414141", foreground="white")
+        self.lab2 = Label(self.datoEx1, text="Ingrese el dato a incluir:", background="#414141", foreground="white")
         self.lab2.grid(row=1, column=0, pady=10, padx=10)
         self.texto4 = Text(self.datoEx1, height=1, width=40)
         self.texto4.grid(row=1, column=1, sticky='we', pady=10, padx=10)
         #Label de datos Extras2
-        self.lab3 = Label(self.datos1, text="Ingrese el dato a incluir:", background="#414141", foreground="white")
+        self.lab3 = Label(self.datoEx2, text="Ingrese el dato a incluir:", background="#414141", foreground="white")
         self.lab3.grid(row=1, column=0, pady=10, padx=10)
         self.texto5 = Text(self.datoEx2, height=1, width=40)
         self.texto5.grid(row=1, column=1, sticky='we', pady=10, padx=10)
