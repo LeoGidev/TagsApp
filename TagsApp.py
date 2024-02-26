@@ -204,12 +204,13 @@ class TagsApp:
         textoExtra2 = textoExtra2.strip('\n')
         extra = textoExtra1 + " - " + textoExtra2
         
-        self.barra_progreso.config(mode='determinate', maximum=18)
+        self.barra_progreso.config(mode='indeterminate', maximum=18)
         # Configurar la barra de progreso
-        self.barra_progreso.start(100)
+        
     
 
         for a, b, c in zip(list(self.datA), list(self.datB), list(self.datC)):
+            self.barra_progreso.start(100)
             
             img = cv2.imread(self.archivo)
             texto = self.resultado1 + ": " + str(a)
@@ -236,7 +237,7 @@ class TagsApp:
             
         i = 0
         # Detener la barra de progreso al completar la tarea
-        self.barra_progreso.config(mode='indeterminate')
+        self.barra_progreso.config(mode='determinate')
         
 
     
