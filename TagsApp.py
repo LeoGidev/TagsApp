@@ -32,7 +32,7 @@ class TagsApp:
         self.root.columnconfigure(1, weight=0)
         self.root.rowconfigure(3, weight=1)
         #Configuración del icono
-        #self.root.iconbitmap(os.path.abspath("icon.ico"))
+        self.root.iconbitmap(os.path.abspath("icon.ico"))
 
         #frame nav        
         self.nav_bar = ttk.Frame(self.root, height=50, style='barratop.TFrame')
