@@ -70,10 +70,7 @@ class TagsApp:
     def create_widgets(self):
         self.create_labels_and_entries()
         self.create_buttons()
-        # Barra de progreso
-        self.barra_progreso = ttk.Progressbar(self.root, length=300, mode='determinate')
-        self.barra_progreso.grid(row=5, column=1, columnspan=2, pady=10)
-    
+        
     def create_labels_and_entries(self):
         style = ttk.Style()        
         style.configure("Dark.TFrame", foreground="white", background="#414141", borderwidth=0) 
@@ -203,7 +200,10 @@ class TagsApp:
         textoExtra2 = self.texto5.get("1.0", "end")
         textoExtra2 = textoExtra2.strip('\n')
         extra = textoExtra1 + " - " + textoExtra2
-        
+        # Barra de progreso
+        self.barra_progreso = ttk.Progressbar(self.root, length=300, mode='determinate')
+        self.barra_progreso.grid(row=5, column=1, columnspan=2, pady=10)
+    
 
         for a, b, c in zip(list(self.datA), list(self.datB), list(self.datC)):
             # Configurar la barra de progreso
