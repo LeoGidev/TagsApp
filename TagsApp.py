@@ -125,7 +125,7 @@ class TagsApp:
         self.fonint2.grid(row=0, column=0, sticky='ew', padx=0, pady=3, rowspan=2)
         #boton de crear
         
-        self.dale = ttk.Button(self.listo, text="Crear etiquetas", command=self.buscador2, width=300, style='Fancy.TButton')
+        self.dale = ttk.Button(self.listo, text="Crear etiquetas", command=self.buscador2, width=30, style='Fancy.TButton')
         self.dale.grid(row=1, column=1, sticky='ew', pady=10, padx=10)
         
         self.fonint3 = ttk.Frame(self.listo, width=300)
