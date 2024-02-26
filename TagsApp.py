@@ -64,6 +64,9 @@ class TagsApp:
         self.listo = ttk.Frame(self.root, width=300, style='barratop.TFrame')
         self.listo = ttk.LabelFrame(self.root, text='Crear Etiquetas', padding=(10,10))
         self.listo.grid(row=4, column=1, sticky='ew', padx=0, pady=3, columnspan=2)
+        # Barra de progreso
+        self.barra_progreso = ttk.Progressbar(self.root, length=300, mode='indeterminate')
+        self.barra_progreso.grid(row=5, column=1, columnspan=2, pady=10)
         
         self.create_widgets()
 
@@ -200,14 +203,14 @@ class TagsApp:
         textoExtra2 = self.texto5.get("1.0", "end")
         textoExtra2 = textoExtra2.strip('\n')
         extra = textoExtra1 + " - " + textoExtra2
-        # Barra de progreso
-        self.barra_progreso = ttk.Progressbar(self.root, length=300, mode='determinate')
-        self.barra_progreso.grid(row=5, column=1, columnspan=2, pady=10)
+        
+        self.barra_progreso.config(mode='determinate', maximum=18)
+        # Configurar la barra de progreso
+        self.barra_progreso.start(100)
     
 
         for a, b, c in zip(list(self.datA), list(self.datB), list(self.datC)):
-            # Configurar la barra de progreso
-            self.barra_progreso.start(i)
+            
             img = cv2.imread(self.archivo)
             texto = self.resultado1 + ": " + str(a)
             ubicacion = (100, 200)
@@ -228,14 +231,15 @@ class TagsApp:
             cv2.imwrite(self.rutaresult, img)
             i += 1
             print('dibujando', self.rutaresult)
+            # Configurar la barra de progreso
+            self.barra_progreso.step(1)
             
         i = 0
         # Detener la barra de progreso al completar la tarea
-        self.barra_progreso.stop()
+        self.barra_progreso.config(mode='indeterminate')
+        
 
     
-    
-
 
 if __name__ == "__main__":
     root = ThemedTk(theme="equilux")
