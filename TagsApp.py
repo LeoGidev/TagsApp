@@ -193,25 +193,21 @@ class TagsApp:
             print('error')
 
     def dibujar(self):
-        #img = cv2.imread(self.archivo)
         tamañoLetra = 3
         colorLetra = (255, 255, 255)
         grosorLetra = 3
         i = 0
-        textoExtra1 = self.texto4.get("1.0","end")
+        total_iteraciones = len(list(self.datA))  # o cualquier otra medida de progreso
+        textoExtra1 = self.texto4.get("1.0", "end")
         textoExtra1 = textoExtra1.strip('\n')
         textoExtra2 = self.texto5.get("1.0", "end")
         textoExtra2 = textoExtra2.strip('\n')
         extra = textoExtra1 + " - " + textoExtra2
-        
-        self.barra_progreso.config(mode='indeterminate', maximum=18)
-        # Configurar la barra de progreso
-        
-    
+
+        # Configurar la barra de progreso en modo determinado
+        self.barra_progreso.config(mode='determinate', maximum=total_iteraciones)
 
         for a, b, c in zip(list(self.datA), list(self.datB), list(self.datC)):
-            self.barra_progreso.start(100)
-            
             img = cv2.imread(self.archivo)
             texto = self.resultado1 + ": " + str(a)
             ubicacion = (100, 200)
@@ -230,14 +226,16 @@ class TagsApp:
 
             self.rutaresult = 'C:\\Users\\work\\Desktop\\imagenes\\etiqueta' + str(i) + '.jpg'
             cv2.imwrite(self.rutaresult, img)
-            i += 1
             print('dibujando', self.rutaresult)
-            # Configurar la barra de progreso
+
+            # Actualizar el valor de la barra de progreso
             self.barra_progreso.step(1)
-            
-        i = 0
-        # Detener la barra de progreso al completar la tarea
-        self.barra_progreso.config(mode='determinate')
+
+        # Volver a configurar la barra de progreso en modo indeterminado
+        self.barra_progreso.config(mode='indeterminate')
+        self.barra_progreso.stop()
+
+        
         
 
     
