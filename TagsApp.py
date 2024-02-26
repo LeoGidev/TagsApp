@@ -38,7 +38,7 @@ class TagsApp:
         self.root.columnconfigure(1, weight=0)
         self.root.rowconfigure(3, weight=1)
         #Configuración del icono
-        self.root.iconbitmap(os.path.abspath("icon.ico"))
+        #self.root.iconbitmap(os.path.abspath("icon.ico"))
         
         self.create_widgets()
 
@@ -47,7 +47,8 @@ class TagsApp:
         self.create_buttons()
     
     def create_labels_and_entries(self):
-        Label(self.fondo, text="Ingrese La máscara en formato Slash sin la barra:",background="#414141", foreground="white").grid(row=1,column=2, pady=10)
+        arch = Label(self.fondo, text="Imagen no seleccionada:",background="#414141", foreground="white")
+        arch.grid(row=1,column=2, pady=10)
         
 
     def create_buttons(self):
