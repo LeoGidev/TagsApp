@@ -71,7 +71,7 @@ class TagsApp:
         self.create_labels_and_entries()
         self.create_buttons()
         # Barra de progreso
-        self.barra_progreso = ttk.Progressbar(self.root, length=300, mode='indeterminate')
+        self.barra_progreso = ttk.Progressbar(self.root, length=300, mode='determinate')
         self.barra_progreso.grid(row=5, column=1, columnspan=2, pady=10)
     
     def create_labels_and_entries(self):
