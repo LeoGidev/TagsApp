@@ -48,12 +48,12 @@ class TagsApp:
     
     def create_labels_and_entries(self):
         self.arch = Label(self.fondo, text="Imagen no seleccionada:",background="#414141", foreground="white")
-        self.arch.grid(row=1,column=2, pady=10)
+        self.arch.grid(row=1,column=0, pady=10)
         
 
     def create_buttons(self):
         self.btn1 = ttk.Button(self.fondo, text="Abrir", command=self.buscador1)
-        self.btn1.grid(row=0, column=2, sticky='w', pady=10, padx=10)
+        self.btn1.grid(row=1, column=1, sticky='w', pady=10, padx=10)
     
     def buscador1(self):
         try:
@@ -62,16 +62,13 @@ class TagsApp:
                                                  filetypes=(("imagen", "*.png*"),
                                                             ("all files", "*.*")))
 
-            #result = self.texto.get("1.0", "end")
-            #resultado = result.strip("\n")
+           
             cuadromensaje = Label(self.arch, text="Archivo abierto: " + archivo, background="#414141", foreground="white")
             cuadromensaje.pack()
             
-            #hoja1 = pd.read_excel(archivo)
-            #self.dato1 = hoja1[resultado]
+            
         except Exception as e:
-            #cuadromensaje = Label(self.ResultadoGeneral, text="Error: " + str(e), background="#414141", foreground="white")
-            #cuadromensaje.pack()
+            
             print('error')
 
 
