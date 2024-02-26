@@ -17,7 +17,7 @@ class TagsApp:
         #configuración de ventana
         self.root = root
         self.root.title('Tags App')
-        self.root.geometry("940x640")
+        self.root.geometry("940x500")
         self.root.configure(bg='#414141')
         
         #estilos de los frames
@@ -30,7 +30,7 @@ class TagsApp:
         #configuración de la prioridad para achicar columnas o rows en el resize de la ventana
         self.root.columnconfigure(0, weight=0)
         self.root.columnconfigure(1, weight=0)
-        self.root.rowconfigure(3, weight=1)
+        #self.root.rowconfigure(3, weight=1)
         #Configuración del icono
         self.root.iconbitmap(os.path.abspath("icon.ico"))
 
