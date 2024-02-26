@@ -12,7 +12,7 @@ import imageio
 
 
 
-class calculadoraRED:
+class TagsApp:
     def __init__(self, root):
         #configuración de ventana
         self.root = root
