@@ -53,6 +53,25 @@ class TagsApp:
     def create_buttons(self):
         self.btn1 = ttk.Button(self.fondo, text="Abrir", command=self.buscador1, state='disabled')
         self.btn1.grid(row=0, column=2, sticky='w', pady=10, padx=10)
+    
+    def buscador1(self):
+        try:
+            archivo = filedialog.askopenfilename(initialdir="/",
+                                                 title="Elija un archivo",
+                                                 filetypes=(("imagen", "*.png*"),
+                                                            ("all files", "*.*")))
+
+            #result = self.texto.get("1.0", "end")
+            #resultado = result.strip("\n")
+            #cuadromensaje = Label(self.ResultadoGeneral, text="Archivo abierto: " + archivo, background="#414141", foreground="white")
+            #cuadromensaje.pack()
+            
+            #hoja1 = pd.read_excel(archivo)
+            #self.dato1 = hoja1[resultado]
+        except Exception as e:
+            #cuadromensaje = Label(self.ResultadoGeneral, text="Error: " + str(e), background="#414141", foreground="white")
+            #cuadromensaje.pack()
+            print('error')
 
 
 if __name__ == "__main__":
