@@ -119,13 +119,17 @@ class TagsApp:
         #boton de datoexcel
         self.btn2 = ttk.Button(self.datos1, text="Abrir", command=self.buscador2, state='disabled', style='Fancy.TButton')
         self.btn2.grid(row=1, column=4, sticky='w', pady=10, padx=10)
-        #boton de crear
-        #boton de datoexcel
-        self.dale = ttk.Button(self.listo, text="Crear etiquetas", command=self.buscador2, style='Fancy.TButton')
-        self.dale.grid(row=1, column=2, sticky='ns', pady=10, padx=10)
+        
         #frame para el boton final
-        self.fonint1 = ttk.Frame(self.fondo, width=10, style='Dark.TFrame')
-        self.fonint1.grid(row=0, column=0, sticky='ns', padx=0, pady=3, rowspan=2)
+        self.fonint2 = ttk.Frame(self.listo, width=10, style='Dark.TFrame')
+        self.fonint2.grid(row=0, column=0, sticky='ew', padx=0, pady=3, rowspan=2)
+        #boton de crear
+        
+        self.dale = ttk.Button(self.listo, text="Crear etiquetas", command=self.buscador2, style='Fancy.TButton')
+        self.dale.grid(row=1, column=1, sticky='ew', pady=10, padx=10)
+        
+        self.fonint3 = ttk.Frame(self.listo, width=10, style='Dark.TFrame')
+        self.fonint3.grid(row=0, column=2, sticky='ew', padx=0, pady=3, rowspan=2)
         
         
     
