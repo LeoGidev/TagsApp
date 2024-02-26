@@ -57,8 +57,8 @@ class TagsApp:
         self.arch = Label(self.fondo, text="Imagen no seleccionada:",background="#414141", foreground="white")
         self.arch.grid(row=1,column=0, pady=10)
         #Label de dato1
-        lab1 = Label(self.datos1, text="Ingrese el nombre de dato:")
-        lab1.grid(row=1, column=0, pady=10, padx=10)
+        self.lab1 = Label(self.datos1, text="Ingrese el nombre de dato")
+        self.lab1.grid(row=1, column=0, pady=10, padx=10)
         self.texto1 = Text(self.datos1, height=1, width=10)
         self.texto1.grid(row=1, column=1, sticky='e', pady=10, padx=10)
         #self.texto1.bind('<KeyRelease>', self.check_entries)
@@ -67,13 +67,15 @@ class TagsApp:
     def create_buttons(self):
         self.btn1 = ttk.Button(self.fondo, text="Abrir", command=self.buscador1)
         self.btn1.grid(row=1, column=1, sticky='w', pady=10, padx=10)
-        #
+        #boton de dato1
+        self.btn2 = ttk.Button(self.datos1, text="Abrir", command=self.buscador2)
+        self.btn2.grid(row=1, column=2, sticky='w', pady=10, padx=10)
     
     def buscador1(self):
         try:
             archivo = filedialog.askopenfilename(initialdir="/",
                                                  title="Elija un archivo",
-                                                 filetypes=(("imagen", "*.png*"),
+                                                 filetypes=(("imagen", "*.jpg*"),
                                                             ("all files", "*.*")))
 
            
@@ -83,6 +85,24 @@ class TagsApp:
             
         except Exception as e:
             
+            print('error')
+
+    def buscador2(self):
+        try:
+            archivo2 = filedialog.askopenfilename(initialdir="/",
+                                                  title="Elija un archivo",
+                                                  filetypes=(("Hoja de Excel", "*.xls*"),
+                                                             ("all files", "*.*")))
+            result2 = self.texto1.get("1.0", "end")
+            resultado2 = result2.strip('\n')
+            cuadromensaje = Label(self.lab1, text="dato: " +result2 +'del archivo:' + archivo2, background="#414141", foreground="white")
+            cuadromensaje.pack()
+            
+            #hoja2 = pd.read_excel(archivo2)
+            #self.dato2 = hoja2[resultado2]
+        except Exception as e:
+            #cuadromensaje = Label(self.ResultadoGeneral, text="Error: " + str(e),background="#414141", foreground="white")
+            #cuadromensaje.pack()
             print('error')
 
 
