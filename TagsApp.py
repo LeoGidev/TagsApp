@@ -227,6 +227,7 @@ class TagsApp:
             self.rutaresult = 'C:\\Users\\work\\Desktop\\imagenes\\etiqueta' + str(i) + '.jpg'
             cv2.imwrite(self.rutaresult, img)
             print('dibujando', self.rutaresult)
+            i=i+1
 
             # Actualizar el valor de la barra de progreso
             self.barra_progreso.step(1)
